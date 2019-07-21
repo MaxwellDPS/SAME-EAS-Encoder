@@ -22,18 +22,17 @@ This will be filled in soon.
     No matter what, you will be accountable for missuse of the
     tones. 
 
-    AGAIN: YOU ARE RESPONSIBLE FOR YOUR SHENANIGANS! We aren't!
+AGAIN: YOU ARE RESPONSIBLE FOR YOUR SHENANIGANS! We aren't!
    
 
 
-         Thank you for reading this, and by using this 
-      program you agree to such terms above.
+Thank you for reading this, and by using this program you agree to such terms above.
 
 
 
-#License (see the MIT License)
+# License (see the MIT License)
 
-#Copyright (c) 2019 EAS Alert Team
+# Copyright (c) 2019 EAS Alert Team
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
