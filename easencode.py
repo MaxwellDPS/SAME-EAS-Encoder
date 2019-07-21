@@ -44,7 +44,7 @@ def main():
     numCh = 1
     peakLevel = -10
     sampWidth = 16
-    sampRate = 9600
+    sampRate = 44100
     msgaudio = None
 
     try:
@@ -77,8 +77,8 @@ def main():
 	    infile.close()
 	else:
 	    infile = None
-	data = generateEASpcmData(eas, args.event, args.fips, 
-		0000, ts_val, TESTALRT, sampRate, sampWidth, 
+	data = generateEASpcmData(args.originator, args.event, args.fips, 
+		args.duration, ts_val, 'TSTALRT ', sampRate, sampWidth, 
 		peakLevel, numCh, msgaudio, args.custom_msg)
 	data = filterPCMaudio(3000, sampRate, 20, sampWidth, numCh, data)
 	file = wave.open(args.outputfile, 'wb')
@@ -89,7 +89,7 @@ def main():
     except Exception as inst:
 	print "Exception:", inst, inst.args, sys.exc_info()[1]
 
-program_version = "1.2"
+program_version = "0.01"
 events = ('npt', 'rmt', 'rwt', 'toa', 'tor', 'sva', 'svr',
 	  'svs', 'sps', 'ffa', 'ffw', 'ffs', 'fla', 'flw', 'fls', 'wsa', 'wsw',
 	  'bzw', 'hwa', 'hww', 'hua', 'huw', 'hls', 'tsa', 'tsw', 'dmo', 'txf',
@@ -128,7 +128,7 @@ Fuzz mode: Generate a test with a non-standard EAS message using -z or --fuzz
 
 """)
 parser.add_argument("-v", "--ver", "--version", action='version', 
-	version="EASEncode Version {0}/Core version {1}".format(program_version,
+	version="SAME EAS Encoder {0}/Core version {1}".format(program_version,
 		eastestgen_core_version) )
 parser.add_argument("-z", "--fuzz", dest="custom_msg", 
 	help="pass a non-standard EAS message string to encoder")
@@ -146,7 +146,7 @@ parser.add_argument("-t", "--start", dest="timestamp", default="now",
 	help="override the start timestamp, format is 'MM/DD/YYYY HH:MM'" \
 		" UTC timezone or use 'now' (default)")
 parser.add_argument("-c", "--call", dest="callsign",
-	help="set the originator call letters or id", required=True)
+	help="set the originator call letters or id", required=False)
 parser.add_argument("-a", "--audio-in", dest="audioin", type=str,
 	help="insert audio file between EAS header and eom; max length"
 	" is 2 minutes")

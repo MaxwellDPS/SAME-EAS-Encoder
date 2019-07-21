@@ -1,39 +1,64 @@
 @echo off
-
-title EAS Creator
-
+title EAS Gen
 :top
+cls
+echo ============== - + - ==============
+echo SAME-EAS-Encoder
+echo by eas-alert on Github
+echo https://github.com/eas-alert
+easencode.py -v
+echo Read the README file before cont.
+echo ============== - + - ==============
+echo Audio In?
+set /p "ain=y/n "
+if "%ain%"=="n" goto NoAudioIn
+if "%ain%"=="y" goto AudioIn
+goto top
 
-set /p ynt="Use Text Audio? (Y/N): "
-if "%ynt%"=="y" set /p aaa="Audio Path: "
-if "%ynt%"=="y" set /p set="Audio Extension: "
 
-set /p "mmm=Set Originator: "
+
+:NoAudioIn
+set /p "eee=Set 3 Digit Event Code: "
+set /p "lll=Set SAME Locations (Space Seperated): "
+set /p "ddd=Set Duration: "
+rem set /p "ttt=Set Start Time: "
+rem set /p "rrr=Originator (PEP, EAS, WXR): "
+rem set /p "bbb=Set Callsign: "
+set /p "ooo=Set Output Name: "
+
+if "%eee%"=="" set "eee=DMO"
+if "%ttt%"=="" set "ttt=now"
+if "%rrr%"=="" set "rrr=wxr"
+if "%bbb%"=="" set "bbb=TSTALRT"
+if "%ooo%"=="" set "ooo=Output"
+
+echo ================
+easencode.py -e %eee% -o %rrr% -f %lll% -d %ddd% -t %ttt% -c "%bbb%" %ooo%.wav
+echo ================
+goto spa
+
+:AudioIn
 set /p "eee=Set Event: "
 set /p "lll=Set SAME Locations (Space Seperated): "
 set /p "ddd=Set Duration: "
-set /p "ttt=Set Start Time: "
-set /p "bbb=Set Broadcaster: "
+rem set /p "ttt=Set Start Time: "
+rem set /p "rrr=Originator (PEP, EAS, WXR): "
+rem set /p "bbb=Set Callsign: "
+set /p "aaa=Audio In Directory (MUST BE WAV): 
 set /p "ooo=Set Output Name: "
 
-if "%mmm%"=="" set "eee=WXR"
-if "%eee%"=="" set "eee=RWT"
-if "%lll%"=="" set "lll=000000"
-if "%ddd%"=="" set "ddd=0015"
+if "%eee%"=="" set "eee=DMO"
 if "%ttt%"=="" set "ttt=now"
-if "%bbb%"=="" set "bbb=KACN/NWS"
-if "%ooo%"=="" set "ooo=Test"
+if "%rrr%"=="" set "rrr=wxr"
+if "%bbb%"=="" set "bbb=TSTALRT"
+if "%ooo%"=="" set "ooo=Output"
 
+echo ================
+easencode.py -e %eee% -o %rrr% -f %lll% -d %ddd% -t %ttt% -c "%bbb%" -a "%aaa%" %ooo%.wav
+echo ================
+goto spa
 
-if "%ynt%"=="n" easencode.py -o %mmm% -e %eee% -f %lll% -d %ddd% -t %ttt% -c "%bbb%" %ooo%.wav && goto skipsetaudio
-
-easencode.py -e %eee% -f %lll% -d %ddd% -t %ttt% -c "%bbb%" -a %aaa%.%set% %ooo%.wav
-
-
-:skipsetaudio
-
-pause
-
+:spa
 set /p Play="Play Audio? (y/n): "
 
 if %play%==y goto cont

@@ -1,6 +1,6 @@
 from afsk import *
 
-eastestgen_core_version = "1.1"
+eastestgen_core_version = "0.0.1 BETA"
 
 def generateEASpcmData(org, event, fips, eventDuration, timestamp, stationId, sampRate, sampWidth, 
 	                peakLevel, numCh, msgaudio=None, customMsg=None):
