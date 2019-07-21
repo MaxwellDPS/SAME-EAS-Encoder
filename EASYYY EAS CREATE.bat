@@ -21,15 +21,12 @@ goto top
 set /p "eee=Set 3 Digit Event Code: "
 set /p "lll=Set SAME Locations (Space Seperated): "
 set /p "ddd=Set Duration: "
-rem set /p "ttt=Set Start Time: "
-rem set /p "rrr=Originator (PEP, EAS, WXR): "
-rem set /p "bbb=Set Callsign: "
 set /p "ooo=Set Output Name: "
 
 if "%eee%"=="" set "eee=DMO"
-if "%ttt%"=="" set "ttt=now"
-if "%rrr%"=="" set "rrr=wxr"
-if "%bbb%"=="" set "bbb=TSTALRT"
+set "ttt=now"
+set "rrr=wxr"
+set "bbb=TSTALRT"
 if "%ooo%"=="" set "ooo=Output"
 
 echo ================
@@ -41,16 +38,13 @@ goto spa
 set /p "eee=Set Event: "
 set /p "lll=Set SAME Locations (Space Seperated): "
 set /p "ddd=Set Duration: "
-rem set /p "ttt=Set Start Time: "
-rem set /p "rrr=Originator (PEP, EAS, WXR): "
-rem set /p "bbb=Set Callsign: "
 set /p "aaa=Audio In Directory (MUST BE WAV): 
 set /p "ooo=Set Output Name: "
 
 if "%eee%"=="" set "eee=DMO"
-if "%ttt%"=="" set "ttt=now"
-if "%rrr%"=="" set "rrr=wxr"
-if "%bbb%"=="" set "bbb=TSTALRT"
+set "ttt=now"
+set "rrr=wxr"
+set "bbb=TSTALRT"
 if "%ooo%"=="" set "ooo=Output"
 
 echo ================
