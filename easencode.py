@@ -44,7 +44,7 @@ def main():
     numCh = 1
     peakLevel = -10
     sampWidth = 16
-    sampRate = 44100
+    sampRate = 96000
     msgaudio = None
 
     try:
@@ -78,7 +78,7 @@ def main():
 	else:
 	    infile = None
 	data = generateEASpcmData(args.originator, args.event, args.fips, 
-		args.duration, ts_val, 'TSTALRT ', sampRate, sampWidth, 
+		'0000', ts_val, 'TSTALRT ', sampRate, sampWidth, 
 		peakLevel, numCh, msgaudio, args.custom_msg)
 	data = filterPCMaudio(3000, sampRate, 20, sampWidth, numCh, data)
 	file = wave.open(args.outputfile, 'wb')
