@@ -33,7 +33,7 @@ set "ddd=0000"
 if "%ooo%"=="" set "ooo=Output"
 
 echo ================
-easencode.py -e %eee% -o %rrr% -f %lll% -d %ddd% -t %ttt% -c "%bbb%" %ooo%.wav
+easencode.py -e %eee% -o %rrr% -f %lll% -d %ddd% -t %ttt% -c "%bbb%" "%cd%/output/%ooo%.wav"
 echo ================
 goto spa
 
@@ -52,7 +52,7 @@ set "ddd=0000"
 if "%ooo%"=="" set "ooo=Output"
 
 echo ================
-easencode.py -e %eee% -o %rrr% -f %lll% -d %ddd% -t %ttt% -c "%bbb%" -a "%aaa%" %ooo%.wav
+easencode.py -e %eee% -o %rrr% -f %lll% -d %ddd% -t %ttt% -c "%bbb%" -a "%aaa%" "%cd%/output/%ooo%.wav"
 echo ================
 goto spa
 
@@ -72,7 +72,7 @@ goto top
 if %mrr%==y goto skrp
 if %mrr%==Y goto skrp
 echo Set Sound = CreateObject("WMPlayer.OCX.7") > %cd%\sound.vbs
-echo Sound.URL = "%cd%\%ooo%.wav" >> %cd%\sound.vbs
+echo Sound.URL = "%cd%\output\%ooo%.wav" >> %cd%\sound.vbs
 echo Sound.Controls.play >> %cd%\sound.vbs
 echo do while Sound.currentmedia.duration = 0 >> %cd%\sound.vbs
 echo wscript.sleep 100 >> %cd%\sound.vbs
@@ -85,7 +85,7 @@ cls
 goto top
 
 :skrp
-start %ooo%.wav
+start output/%ooo%.wav
 pause
 cls
 goto top
