@@ -44,7 +44,7 @@ def main():
     numCh = 1
     peakLevel = -10
     sampWidth = 16
-    sampRate = 96000
+    sampRate = 44100
     msgaudio = None
 
     try:
@@ -52,8 +52,6 @@ def main():
 	    if value is not None:
 	        if option is 'fips':
 		    value = " ".join(value)
-		if args.custom_msg is None:
-		    print option, value
 		if not re.match(arg_patterns[option], str(value), re.I):
 		    parser.error("Invalid {0} '{1}'".format(option, value ))
 	
@@ -78,8 +76,8 @@ def main():
 	else:
 	    infile = None
 	data = generateEASpcmData(args.originator, args.event, args.fips, 
-		'0000', ts_val, 'TSTALRT ', sampRate, sampWidth, 
-		peakLevel, numCh, msgaudio, args.custom_msg)
+		'0000', ts_val, 'TESTALRT', sampRate, sampWidth, 
+		peakLevel, numCh, msgaudio)
 	data = filterPCMaudio(3000, sampRate, 20, sampWidth, numCh, data)
 	file = wave.open(args.outputfile, 'wb')
 	file.setparams( (numCh, sampWidth/8 , sampRate, sampRate, 'NONE', '') )
@@ -102,11 +100,9 @@ originators = ('wxr', 'eas')
 arg_patterns = {'event':r'|'.join(events), 'fips':r'^(\d{6})(\s+\d{6})*$', 
 	        'timestamp':r'(now)|(\d{2}/\d{2}/\d{4}\s+\d{2}:\d{2})', 'originator':r'|'.join(originators), 
 		'duration':r'([0-1][0-9][03]0)|(00[14]5)|(2[0-3][03]0)|(2400)',
-		'callsign':r'.*', 'audioin':r'.+\.wav', 'outputfile':r'.+\.wav',
-		'custom_msg':r'.*'}
+		'callsign':r'.*', 'audioin':r'.+\.wav', 'outputfile':r'.+\.wav'}
 
 first_parser = argparse.ArgumentParser(add_help=False)
-first_parser.add_argument("-z", "--fuzz", dest="custom_msg")
 #first_parser.add_argument("outputfile", metavar='OUTPUT.WAV', type=str)
 
 parser = argparse.ArgumentParser(description="A script to generate EAS messages",
@@ -128,10 +124,8 @@ Fuzz mode: Generate a test with a non-standard EAS message using -z or --fuzz
 
 """)
 parser.add_argument("-v", "--ver", "--version", action='version', 
-	version="SAME EAS Encoder {0}/Core version {1}".format(program_version,
+	version="EASEncode Version {0}/Core version {1}".format(program_version,
 		eastestgen_core_version) )
-parser.add_argument("-z", "--fuzz", dest="custom_msg", 
-	help="pass a non-standard EAS message string to encoder")
 parser.add_argument("-o", "--org", dest="originator",  
 	help="set the message originator", default='EAS')
 parser.add_argument("-e", "--event", dest="event", 
@@ -146,19 +140,15 @@ parser.add_argument("-t", "--start", dest="timestamp", default="now",
 	help="override the start timestamp, format is 'MM/DD/YYYY HH:MM'" \
 		" UTC timezone or use 'now' (default)")
 parser.add_argument("-c", "--call", dest="callsign",
-	help="set the originator call letters or id", required=False)
+	help="set the originator call letters or id", required=True)
 parser.add_argument("-a", "--audio-in", dest="audioin", type=str,
 	help="insert audio file between EAS header and eom; max length"
 	" is 2 minutes")
 parser.add_argument('outputfile', metavar='OUTPUT.WAV', type=str)
 
 try:
-    args1, args2 = first_parser.parse_known_args()
-    #print args1, args2
-    if args1.custom_msg is None:
-        args = parser.parse_args(args2)
-    else:
-	default_cmd = ['-z', args1.custom_msg, '-e', 'RWT', '-f', '000000', 
+	args1, args2 = first_parser.parse_known_args()
+	default_cmd = ['-e', 'RWT', '-f', '000000', 
 		'-d', '0015', '-c', '0']
 	default_cmd.extend(args2)
 	#print default_cmd
