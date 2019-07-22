@@ -28,6 +28,7 @@ set /p "ooo=Set Output Name: "
 if "%eee%"=="" set "eee=DMO"
 set "ttt=now"
 set "bbb=TESTALRT"
+set "ddd=0000"
 if "%ooo%"=="" set "ooo=Output"
 
 echo ================
@@ -45,6 +46,7 @@ set /p "ooo=Set Output Name: "
 if "%eee%"=="" set "eee=DMO"
 set "ttt=now"
 set "bbb=TESTALRT"
+set "ddd=0000"
 if "%ooo%"=="" set "ooo=Output"
 
 echo ================
