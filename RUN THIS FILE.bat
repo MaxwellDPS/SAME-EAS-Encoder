@@ -26,6 +26,7 @@ set /p "lll=Set SAME Locations (Space Seperated, National Disabled): "
 set /p "ooo=Set Output Name: "
 
 if "%eee%"=="" set "eee=DMO"
+if "%lll%"=="000000" set "lll=INVALID"
 set "ttt=now"
 set "bbb=TESTALRT"
 set "ddd=0000"
@@ -44,6 +45,7 @@ set /p "aaa=Audio In Directory:
 set /p "ooo=Set Output Name: "
 
 if "%eee%"=="" set "eee=DMO"
+if "%lll%"=="000000" set "lll=INVALID"
 set "ttt=now"
 set "bbb=TESTALRT"
 set "ddd=0000"
