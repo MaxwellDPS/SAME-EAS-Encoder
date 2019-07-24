@@ -58,11 +58,6 @@ messages and observe the way the decoder reacts. Consult
 the FCC rules for the correct values for FIPS codes and
 activation messages.
 
-The software also provides a "fuzzer" mode wherein the user
-can generate messages with incorrect or undocumented values.
-This can be used to check how the decoder responds to data
-that is not-defined or incorrectly formatted.
-
 Some basic help is available on the commandline using the 
 (-h) help option.
 
@@ -77,9 +72,6 @@ Generate a simple test
 
 Generate a test with a voice message from input.wav
     easencode.py -e RWT -f 037124 -c KXYZ -a input.wav eas-rwt.wav
-
-Fuzz mode: Generate a test with a non-standard EAS message using -z or --fuzz
-    easencode.py --fuzz "WXR-RAT-012345-111111+0123-BLAHBLAH-" output_eas.wav
     
     
     
