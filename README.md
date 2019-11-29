@@ -1,3 +1,7 @@
+# Important Message from Dame:
+Just wanting to thank one of the previous contributors for helping build this utility. Unfortunately, they are no longer going to be heling out with this repository. 
+
+
 
 # Quick Message from Authors:
 
