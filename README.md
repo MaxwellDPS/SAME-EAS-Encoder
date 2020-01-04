@@ -31,7 +31,7 @@ before using in a production environment, if ever.
 
 # HOW TO USE:
 
-You will need Python 2.7 (we reccomend Python 2.7.9!)
+You will need Python 2.7 (we reccomend Python 2.7.17!)
 
 
 Most of you use windows, so we have made a batch file for 
@@ -64,18 +64,17 @@ activation messages.
 Some basic help is available on the commandline using the 
 (-h) help option.
 
-Most Life Threatening EAS codes (EAN, EAT, CEM) have been
-disabled for safety and legal reasons.
-
-# USAGE EXAMPLES (For Command-Line Use)
+# USAGE EXAMPLES (For Command-Line Use) ***NOT RECOMMENDED!!! USE THE BATCH FILE!!!*
 
 Generate a simple test
-    easencode.py -e RWT -f 029177 -c WXYZ eas-rwt.wav
-    easencode.py -e RWT -f 029177 -t now -c "WXYZ FM" eas-rwt.wav
+    easencode.py -o EAS -e RWT -f 029177 -t now -c "WXYZ/FM" eas-rwt.wav
+    easencode.py -o EAS -e RWT -f 029177 -t now -c "WXYZ/FM" eas-rwt.wav
 
 Generate a test with a voice message from input.wav
-    easencode.py -e RWT -f 037124 -c KXYZ -a input.wav eas-rwt.wav
+    easencode.py -o EAS -e RWT -f 037124 -c "KXYZ/FM" -a input.wav eas-rwt.wav
     
+Generate EOMs
+    easencode.py -o EAS -e RWT -f 005007 -t now -c "KXYZ/FM -x yes eas-rwt-eom.wav
     
     
 # License (see the MIT License)
