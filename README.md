@@ -64,7 +64,8 @@ activation messages.
 Some basic help is available on the commandline using the 
 (-h) help option.
 
-# USAGE EXAMPLES (For Command-Line Use) ***NOT RECOMMENDED!!! USE THE BATCH FILE!!!*
+# USAGE EXAMPLES (For Command-Line Use) 
+# ***NOT RECOMMENDED!!! USE THE BATCH FILE!!!***
 
 Generate a simple test
     easencode.py -o EAS -e RWT -f 029177 -t now -c "WXYZ/FM" eas-rwt.wav
