@@ -7,8 +7,10 @@ psst stuffs been resolved. wb BM
   Read the NWR Specifications document BEFORE you 
   use this program. It will answer 90% of all 
   questions you will have. All NWR documents can
-  be found on weather.gov, or click [https://www.nws.noaa.gov/directives/sym/pd01017012curr.pdf](HERE) for the
-  specific NWR SAME Directives PDF.
+  be found at https://www.nws.noaa.gov/directives/
+  or goto 
+  https://www.nws.noaa.gov/directives/sym/pd01017012curr.pdf 
+  for the specific NWR SAME Directives PDF.
   
   Thank you!
 
