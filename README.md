@@ -2,6 +2,16 @@ psst stuffs been resolved. wb BM
 
 
 
+# Advice from Ana M.
+
+  Read the NWR Specifications document BEFORE you 
+  use this program. It will answer 90% of all 
+  questions you will have. All NWR documents can
+  be found on weather.gov, or click [https://www.nws.noaa.gov/directives/sym/pd01017012curr.pdf](HERE) for the
+  specific NWR SAME Directives PDF.
+  
+  Thank you!
+
 # Quick Message from Authors:
 
   Hi! Just here to tell you that we are NOT responsible for 
