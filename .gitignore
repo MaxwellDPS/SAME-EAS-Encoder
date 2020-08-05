@@ -1,7 +1,9 @@
-
 *.wav
 sound.vbs
 eastestgen.pyc
 *.pyc
 eastestgen.pyc
 *.pyc
+
+.vs/*
+env/*
